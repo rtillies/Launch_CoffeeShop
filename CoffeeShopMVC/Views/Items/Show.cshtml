@@ -3,6 +3,8 @@
 <h1>@Model.Name</h1>
 <h2>Price: $@Model.PriceInDollars()</h2>
 
+<a href="/items/edit/@Model.Id">Edit @Model.Name</a>
+
 <form action="/items/Delete/@Model.Id" method="post">
     <button type="submit">Delete @Model.Name</button>
 </form>
