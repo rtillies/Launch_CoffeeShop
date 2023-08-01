@@ -4,12 +4,17 @@
 
 @if (Model.Count > 0)
 {
-	@foreach (var customer in Model)
-	{
-		<p><a href="/customers/details/@customer.Id">@customer.Name</a></p>
-	}
+	<ul>
+		@foreach (var item in Model)
+		{
+			<li><a href="/customers/details/@customer.Id">@customer.Name</a></li>
+		}
+	</ul>
+
 }
 else
 {
 	<p>No customers to display.</p>
 }
+
+<p><a href="/customers/new">Create New Customer</a></p>

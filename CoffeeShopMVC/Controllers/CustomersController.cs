@@ -18,5 +18,21 @@ namespace CoffeeShopMVC.Controllers
 			var customers = _context.Customers.ToList();
 			return View(customers);
 		}
+
+		public IActionResult New()
+		{
+			return View();
+		}
+
+		// Create route
+		[HttpPost]
+		public IActionResult Index(Customer customer)
+		{
+			_context.Customers.Add(customer);
+			_context.SaveChanges();
+
+			return RedirectToAction("Index");
+		}
+
 	}
 }
