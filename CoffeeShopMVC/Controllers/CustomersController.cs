@@ -59,6 +59,17 @@ namespace CoffeeShopMVC.Controllers
 			return RedirectToAction("show");
 		}
 
+		public IActionResult Delete(int id)
+		{
+			var customer = _context.Customers.Find(id);
 
+			if (customer != null)
+			{
+				_context.Customers.Remove(customer);
+				_context.SaveChanges();
+			}
+
+			return RedirectToAction("Index");
+		}
 	}
 }
