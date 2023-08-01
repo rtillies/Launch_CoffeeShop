@@ -1,0 +1,29 @@
+﻿@model Customer
+
+<h1>@Model.Name</h1>
+<h3>Email: @Model.EmailAddress</h3>
+
+<p>Total Dollars Spent: $@Model.DisplayDollars()</p>
+<p>Total Orders Placed: @Model.Orders.Count</p>
+
+@if(Model.Orders.Count > 0)
+{
+<p>Items Purchased</p>
+    <ul>
+        @foreach (var order in Model.Orders)
+        {
+            @foreach (var item in order.Items)
+            {
+                <li>@item.Name</li>
+            }
+        }
+    </ul>
+}
+else
+{
+    <form action="/customers/Delete/@Model.Id" method="post">
+        <button type="submit">Delete @Model.Name</button>
+    </form>
+}
+
+<a href="/customers/edit/@Model.Id">Edit @Model.Name</a>
