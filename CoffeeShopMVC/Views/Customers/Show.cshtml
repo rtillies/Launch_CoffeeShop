@@ -1,0 +1,19 @@
+﻿@model Customer
+
+<h1>@Model.Name</h1>
+<h3>Email: @Model.EmailAddress</h3>
+
+<a href="/customers/edit/@Model.Id">Edit @Model.Name</a>
+
+<!-- TO DO
+    Total dollars spent
+    List of all items ordered
+
+-->
+
+<!--
+
+<form action="/customers/Delete/@Model.Id" method="post">
+    <button type="submit">Delete @Model.Name</button>
+</form>
+-->
