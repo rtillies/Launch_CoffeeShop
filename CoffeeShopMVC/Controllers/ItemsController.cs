@@ -45,8 +45,17 @@ namespace CoffeeShopMVC.Controllers
             return View();
         }
 
-		[Route("items/edit/{id:int}")]
+		// Create route
+		[HttpPost]
+		public IActionResult Index(Item item)
+		{
+			_context.Items.Add(item);
+			_context.SaveChanges();
 
+			return RedirectToAction("Index");
+		}
+
+		[Route("items/edit/{id:int}")]
 		public IActionResult Edit(int id)
         {
 			var item = _context.Items.Find(id);

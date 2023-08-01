@@ -3,6 +3,7 @@ using System;
 using CoffeeShopMVC.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CoffeeShopMVC.Migrations
 {
     [DbContext(typeof(CoffeeShopMVCContext))]
-    partial class CoffeeShopMVCContextModelSnapshot : ModelSnapshot
+    [Migration("20230801132754_CreateCustomersAndOrders")]
+    partial class CreateCustomersAndOrders
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,9 +45,9 @@ namespace CoffeeShopMVC.Migrations
                         .HasColumnName("name");
 
                     b.HasKey("Id")
-                        .HasName("pk_customers");
+                        .HasName("pk_customer");
 
-                    b.ToTable("customers", (string)null);
+                    b.ToTable("customer", (string)null);
                 });
 
             modelBuilder.Entity("CoffeeShopMVC.Models.Item", b =>
@@ -123,7 +126,7 @@ namespace CoffeeShopMVC.Migrations
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_order_customers_customer_id");
+                        .HasConstraintName("fk_order_customer_customer_id");
 
                     b.Navigation("Customer");
                 });

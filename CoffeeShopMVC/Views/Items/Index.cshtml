@@ -4,12 +4,16 @@
 
 @if(Model.Count > 0)
 {
+	<ul>
 	@foreach (var item in Model)
 	{
-		<p><a href="/items/details/@item.Id">@item.Name</a></p>
+		<li><a href="/items/details/@item.Id">@item.Name</a></li>
 	}
+	</ul>
 }
 else
 {
 	<p>No items to display.</p>
 }
+
+<p><a href="/items/new">Create New Item</a></p>
